@@ -9,7 +9,7 @@ It supports full **CRUD operations** for both matches and match odds through a c
 ## Features
 - Manage **sports matches** (create, read, update, delete)
 - Manage **match odds** associated with each match
-- Built using **Java 21 (Oracle JDK)**, **Spring Boot**, **JPA**, and **PostgreSQL**
+- Built using **Java 17 (Oracle JDK)**, **Spring Boot**, **JPA**, and **PostgreSQL**
 - Ready for **Docker Compose** deployment
 
 ## API Entities

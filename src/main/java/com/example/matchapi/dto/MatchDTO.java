@@ -16,7 +16,7 @@ public class MatchDTO {
     private LocalTime matchTime;
     private String teamA;
     private String teamB;
-    private String sport; // Use String instead of enum for easier JSON mapping
+    private String sport;
 
     private List<MatchOddsDTO> odds; // nested DTOs
 }

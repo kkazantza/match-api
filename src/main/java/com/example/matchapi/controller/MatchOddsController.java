@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/matchOdds")
+@RequestMapping("/api/odds")
 public class MatchOddsController {
 
     private final MatchOddsService matchOddsService;
@@ -28,13 +28,13 @@ public class MatchOddsController {
 
     @PostMapping
     public MatchOddsDTO create(@RequestBody MatchOddsDTO odds) {
-        return matchOddsService.save(odds, odds.getMatchId());
+        return matchOddsService.save(odds);
     }
 
     @PutMapping("/{id}")
     public MatchOddsDTO update(@PathVariable Long id, @RequestBody MatchOddsDTO odds) {
         odds.setId(id);
-        return matchOddsService.save(odds, odds.getMatchId());
+        return matchOddsService.save(odds);
     }
 
     @DeleteMapping("/{id}")

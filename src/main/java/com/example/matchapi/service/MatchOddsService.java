@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class MatchOddsService {
@@ -42,9 +40,9 @@ public class MatchOddsService {
     }
 
 
-    public MatchOddsDTO save(MatchOddsDTO matchOddsDTO, Long matchId) {
+    public MatchOddsDTO save(MatchOddsDTO matchOddsDTO) {
 
-        Match match = matchRepository.findById(matchId)
+        Match match = matchRepository.findById(matchOddsDTO.getMatchId())
                 .orElseThrow(() -> new RuntimeException("Match not found"));
 
         MatchOdds matchOdds = MatchMapper.toEntity(matchOddsDTO, match);
