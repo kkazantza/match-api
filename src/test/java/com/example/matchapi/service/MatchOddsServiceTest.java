@@ -4,7 +4,6 @@ import com.example.matchapi.dto.MatchOddsDTO;
 import com.example.matchapi.model.Match;
 import com.example.matchapi.model.MatchOdds;
 import com.example.matchapi.repository.MatchOddsRepository;
-import com.example.matchapi.repository.MatchRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
