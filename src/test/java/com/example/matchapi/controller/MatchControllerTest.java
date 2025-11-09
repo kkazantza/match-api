@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
@@ -63,7 +64,7 @@ class MatchControllerTest {
                         .build();
 
 
-        Mockito.when(matchService.findAll()).thenReturn(Arrays.asList(match));
+        Mockito.when(matchService.findAll()).thenReturn(List.of(match));
 
         mockMvc.perform(get("/api/matches"))
                 .andExpect(status().isOk())

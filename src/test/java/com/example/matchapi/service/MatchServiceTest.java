@@ -14,6 +14,7 @@ import org.mockito.MockitoAnnotations;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,7 +66,7 @@ class MatchServiceTest {
 
     @Test
     void testFindAll() {
-        when(matchRepository.findAll()).thenReturn(Arrays.asList(match));
+        when(matchRepository.findAll()).thenReturn(List.of(match));
 
         var result = matchService.findAll();
         assertEquals(1, result.size());

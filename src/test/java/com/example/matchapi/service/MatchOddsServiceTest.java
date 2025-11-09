@@ -21,20 +21,16 @@ class MatchOddsServiceTest {
     @Mock
     private MatchOddsRepository matchOddsRepository;
 
-    @Mock
-    private MatchRepository matchRepository;
-
     @InjectMocks
     private MatchOddsService matchOddsService;
 
-    private Match match;
     private MatchOdds odds;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        match = Match.builder()
+        Match match = Match.builder()
                 .id(1L)
                 .description("OSFP-PAO")
                 .build();
