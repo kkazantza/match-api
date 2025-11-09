@@ -40,6 +40,7 @@ public class MatchMapper {
                 .id(odds.getId())
                 .specifier(odds.getSpecifier())
                 .odd(odds.getOdd())
+                .matchId(odds.getMatch()!=null?odds.getMatch().getId():null)
                 .build();
     }
 
