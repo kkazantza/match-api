@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = {"id"})
 public class Match {
 
     @Id
@@ -24,7 +25,7 @@ public class Match {
     private String teamA;
     private String teamB;
 
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = SportConverter.class)
     private Sport sport;
 
     @OneToMany(mappedBy = "match", cascade = CascadeType.ALL, orphanRemoval = true)

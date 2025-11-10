@@ -1,7 +1,7 @@
 # ⚽ Match API
 
 ## Overview
-**Match API** is a RESTful web service built with **Java 21**, **Spring Boot**, and **PostgreSQL**, designed to manage sports matches and their corresponding betting odds.  
+**Match API** is a RESTful web service built with **Java 17**, **Spring Boot**, and **PostgreSQL**, designed to manage sports matches and their corresponding betting odds.  
 It supports full **CRUD operations** for both matches and match odds through a clean REST API.
 
 ---
@@ -78,3 +78,23 @@ Username: postgres
 Password: postgres
 Database: matchdb
 ```
+
+4. **Swagger Endpoint**
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
+5. **Postman Collection**
+
+You can import the API endpoints directly into Postman using the provided collection.
+
+[📥 Download Match API Postman Collection](./postman/matchapi.postman_collection.json)
+
+### Import instructions
+1. Open **Postman**.
+2. Click **Import** → **File**.
+3. Select `MatchAPI.postman_collection.json`.
+4. Test endpoints like `/api/matches` and `/api/odds`.
+
+> 💡 Make sure your app is running on [http://localhost:8080](http://localhost:8080).
+>    Set the variable baseURL equal to http://localhost:8080

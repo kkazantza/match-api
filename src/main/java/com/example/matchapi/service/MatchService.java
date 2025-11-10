@@ -1,12 +1,15 @@
 package com.example.matchapi.service;
 
+import com.example.matchapi.advice.MatchNotFoundException;
 import com.example.matchapi.dto.MatchDTO;
 import com.example.matchapi.mapper.MatchMapper;
 import com.example.matchapi.model.Match;
+import com.example.matchapi.model.Sport;
 import com.example.matchapi.repository.MatchRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MatchService {
@@ -27,7 +30,7 @@ public class MatchService {
     public MatchDTO findById(Long id) {
         return matchRepository.findById(id)
                 .map(MatchMapper::toDto)
-                .orElseThrow(() -> new RuntimeException("Match not found with id " + id));
+                .orElseThrow(() -> new MatchNotFoundException("Match not found with id " + id));
     }
 
     public MatchDTO save(MatchDTO matchDTO) {
@@ -37,6 +40,26 @@ public class MatchService {
 
         return MatchMapper.toDto(savedMatch);
     }
+
+
+    public MatchDTO update(Long id, MatchDTO matchDTO) {
+        Match existing = matchRepository.findById(id)
+                .orElseThrow(() -> new MatchNotFoundException("Match with ID " + id + " not found"));
+
+        Match updated = Match.builder()
+                .id(existing.getId())
+                .description(matchDTO.getDescription() != null ? matchDTO.getDescription() : existing.getDescription())
+                .matchDate(matchDTO.getMatchDate() != null ? matchDTO.getMatchDate() : existing.getMatchDate())
+                .matchTime(matchDTO.getMatchTime() != null ? matchDTO.getMatchTime() : existing.getMatchTime())
+                .teamA(matchDTO.getTeamA() != null ? matchDTO.getTeamA() : existing.getTeamA())
+                .teamB(matchDTO.getTeamB() != null ? matchDTO.getTeamB() : existing.getTeamB())
+                .sport(matchDTO.getSport() != null ? Sport.fromString(matchDTO.getSport()) : existing.getSport())
+                .build();
+
+        Match saved = matchRepository.save(updated);
+        return MatchMapper.toDto(saved);
+    }
+
 
 
     public void delete(Long id) {
