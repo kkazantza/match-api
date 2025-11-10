@@ -79,12 +79,24 @@ Password: postgres
 Database: matchdb
 ```
 
-4. **Swagger Endpoint**
+## API Documentation
+
+The REST API is documented using OpenAPI/Swagger. You can:
+
+- View the interactive Swagger UI (requires the app running locally):
+
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
 
-5. **Postman Collection**
+- Or use the exported OpenAPI file in the `docs/` folder:
+
+[OpenAPI YAML](docs/openapi.yaml)
+
+You can import it into Postman or view it using Swagger UI.
+
+
+## Postman Collection
 
 You can import the API endpoints directly into Postman using the provided collection.
 

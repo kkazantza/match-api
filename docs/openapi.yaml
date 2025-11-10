@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: Odds
+    description: Operations for match odds
+  - name: Matches
+    description: Operations for matches
+paths:
+  /api/odds/{id}:
+    get:
+      tags:
+        - Odds
+      summary: Get match odds by ID
+      operationId: getById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchOddsDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+        - Odds
+      summary: Update match odds
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchOddsDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchOddsDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+        - Odds
+      summary: Delete match odds
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/matches/{id}:
+    get:
+      tags:
+        - Matches
+      summary: Get match by ID
+      operationId: getById_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    put:
+      tags:
+        - Matches
+      summary: Update a match
+      operationId: update_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    delete:
+      tags:
+        - Matches
+      summary: Delete a match
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/odds:
+    get:
+      tags:
+        - Odds
+      summary: Get all match odds
+      operationId: getAll
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MatchOddsDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+        - Odds
+      summary: Create match odds
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchOddsDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchOddsDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/matches:
+    get:
+      tags:
+        - Matches
+      summary: Get all matches
+      operationId: getAll_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MatchDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+    post:
+      tags:
+        - Matches
+      summary: Create a new match
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MatchDTO'
+        '400':
+          description: Bad Request
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    MatchOddsDTO:
+      required:
+        - matchId
+        - odd
+        - specifier
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        specifier:
+          type: string
+        odd:
+          type: number
+          format: double
+        matchId:
+          type: integer
+          format: int64
+    LocalTime:
+      type: object
+      properties:
+        hour:
+          type: integer
+          format: int32
+        minute:
+          type: integer
+          format: int32
+        second:
+          type: integer
+          format: int32
+        nano:
+          type: integer
+          format: int32
+    MatchDTO:
+      required:
+        - description
+        - matchDate
+        - matchTime
+        - sport
+        - teamA
+        - teamB
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        description:
+          type: string
+        matchDate:
+          type: string
+          format: date
+        matchTime:
+          $ref: '#/components/schemas/LocalTime'
+        teamA:
+          type: string
+        teamB:
+          type: string
+        sport:
+          type: string
+        odds:
+          type: array
+          items:
+            $ref: '#/components/schemas/MatchOddsDTO'
