@@ -8,7 +8,6 @@ import com.example.matchapi.model.Match;
 import com.example.matchapi.model.MatchOdds;
 import com.example.matchapi.repository.MatchOddsRepository;
 import com.example.matchapi.repository.MatchRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

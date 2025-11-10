@@ -79,7 +79,35 @@
 			"response": []
 		},
 		{
-			"name": "get match odds",
+			"name": "Update match odds",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"matchId\": 1,\r\n  \"specifier\": \"1\",\r\n  \"odd\": 1.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/odds/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"odds",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get match odds",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -91,6 +119,80 @@
 					"path": [
 						"api",
 						"odds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get match by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Get match odds by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/odds/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"odds",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a match",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"description\": \"Arsenal vs Chelsea\",\r\n  \"matchDate\": \"2025-11-11\",\r\n  \"matchTime\": \"18:30:00\",\r\n  \"teamA\": \"Arsenal\",\r\n  \"teamB\": \"Chelsea\",\r\n  \"sport\": \"Football\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/matches/2\n",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"matches",
+						"2\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a match",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/matches/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"matches",
+						"2"
 					]
 				}
 			},

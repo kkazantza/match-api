@@ -6,7 +6,6 @@ import com.example.matchapi.mapper.MatchMapper;
 import com.example.matchapi.model.Match;
 import com.example.matchapi.model.Sport;
 import com.example.matchapi.repository.MatchRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
